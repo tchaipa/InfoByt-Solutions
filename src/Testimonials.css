@@ -1,0 +1,78 @@
+#testimonials {
+    background: var(--bg-secondary);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.tcard {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: border-color var(--transition);
+}
+
+.tcard:hover {
+    border-color: rgba(30, 111, 255, 0.25);
+}
+
+.tcard-quote {
+    font-size: 0.93rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+.tcard-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.tcard-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.tcard-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+.tcard-role {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.stars {
+    color: #f5c518;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.test-section {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.test-reveal {
+    text-align: center;
+}

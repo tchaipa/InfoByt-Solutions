@@ -1,0 +1,56 @@
+ .tech {
+     padding-top: 2rem;
+     padding-bottom: 5rem;
+ }
+
+ .tech-section {
+     max-width: 1200px;
+     margin: 0 auto;
+ }
+
+ .tech-reveal {
+     text-align: center;
+     margin-bottom: 1rem;
+ }
+
+ .tech-grid {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 0.85rem;
+     margin-top: 2.5rem;
+ }
+
+ .tech-grid {
+     justify-content: center;
+ }
+
+ .tech-section-heading {
+     font-size: 1.8rem;
+ }
+
+ .tech-pill {
+     display: flex;
+     align-items: center;
+     gap: 8px;
+     background: var(--bg-card);
+     border: 1px solid var(--border);
+     border-radius: 100px;
+     padding: 0.55rem 1.1rem;
+     font-size: 0.85rem;
+     color: var(--text-secondary);
+     font-weight: 500;
+     transition: all var(--transition);
+ }
+
+ .tech-pill:hover {
+     border-color: rgba(30, 111, 255, 0.35);
+     color: var(--text-primary);
+ }
+
+ .tech-dot {
+     width: 8px;
+     height: 8px;
+     border-radius: 50%;
+     background: var(--gradient);
+     flex-shrink: 0;
+ }

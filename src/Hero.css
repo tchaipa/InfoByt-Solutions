@@ -1,0 +1,300 @@
+#hero {
+    min-height: 100vh;
+    padding: 10rem 5% 6rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse 70% 60% at 60% 40%, rgba(30, 111, 255, 0.13) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 80% 70%, rgba(10, 190, 255, 0.08) 0%, transparent 60%);
+}
+
+[data-theme="light"] .hero-bg {
+    background:
+        radial-gradient(ellipse 70% 60% at 60% 40%, rgba(30, 111, 255, 0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 80% 70%, rgba(10, 190, 255, 0.05) 0%, transparent 60%);
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gradient-subtle);
+    border: 1px solid rgba(30, 111, 255, 0.25);
+    border-radius: 100px;
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+    color: var(--blue-end);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.hero-tag-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gradient);
+    flex-shrink: 0;
+}
+
+.hero-title {
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.hero-title span {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-desc {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background: var(--gradient);
+    color: #fff;
+    border: none;
+    padding: 0.85rem 2rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform var(--transition), box-shadow var(--transition);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(30, 111, 255, 0.35);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1.5px solid var(--border-strong);
+    color: var(--text-primary);
+    padding: 0.85rem 2rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: border-color var(--transition), background var(--transition);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-outline:hover {
+    border-color: var(--accent);
+    background: var(--gradient-subtle);
+}
+
+.hero-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.hero-card-stack {
+    position: relative;
+    width: 380px;
+    height: 320px;
+}
+
+.hcard {
+    position: absolute;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: background var(--transition), border-color var(--transition);
+}
+
+.hcard-main {
+    width: 340px;
+    top: 0;
+    left: 20px;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
+}
+
+.hcard-sub {
+    width: 240px;
+    bottom: 0;
+    right: 0;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+.hcard-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.hcard-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.hcard-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.hcard-bar-label {
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    width: 60px;
+    flex-shrink: 0;
+}
+
+.hcard-bar-bg {
+    flex: 1;
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.hcard-bar-fill {
+    width: 92%;
+    height: 100%;
+    border-radius: 3px;
+    background: var(--gradient);
+}
+
+.hcard-percent {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+
+
+.hcard-metric {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 1.25rem;
+}
+
+.metric-zeus {
+    text-align: right;
+
+}
+
+.metricc {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.metric-2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary)
+}
+
+.metric-big {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.metric-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.hstat-val {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hstat-label {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    margin-top: 2px;
+}
+
+.hcard-label-1 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 0.5rem;
+}
+
+.hcard-label-2 {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gradient);
+    flex-shrink: 0;
+}
+
+.hcard-label-3 {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.hcard-label-4 {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+}

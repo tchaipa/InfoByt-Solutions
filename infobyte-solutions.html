@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InfoByte Solutions – Software & Web Development | Harare</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #0a0e1a;
+    --bg-secondary: #0f1525;
+    --bg-card: #131929;
+    --bg-card-hover: #1a2235;
+    --border: rgba(255,255,255,0.07);
+    --border-strong: rgba(255,255,255,0.13);
+    --text-primary: #f0f4ff;
+    --text-secondary: #8b9cc7;
+    --text-muted: #4a5a7a;
+    --blue-start: #1e6fff;
+    --blue-end: #0abeff;
+    --blue-mid: #0f8fff;
+    --accent: #1e6fff;
+    --accent-glow: rgba(30,111,255,0.18);
+    --nav-bg: rgba(10,14,26,0.85);
+    --gradient: linear-gradient(135deg, #1e6fff 0%, #0abeff 100%);
+    --gradient-subtle: linear-gradient(135deg, rgba(30,111,255,0.12) 0%, rgba(10,190,255,0.08) 100%);
+    --transition: 0.25s cubic-bezier(0.4,0,0.2,1);
+  }
+  [data-theme="light"] {
+    --bg-primary: #f4f7ff;
+    --bg-secondary: #eaeffc;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f0f4ff;
+    --border: rgba(30,111,255,0.1);
+    --border-strong: rgba(30,111,255,0.2);
+    --text-primary: #0a0e1a;
+    --text-secondary: #3a4a6a;
+    --text-muted: #7a8aaa;
+    --nav-bg: rgba(244,247,255,0.9);
+    --accent-glow: rgba(30,111,255,0.1);
+    --gradient-subtle: linear-gradient(135deg, rgba(30,111,255,0.07) 0%, rgba(10,190,255,0.05) 100%);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background var(--transition), color var(--transition);
+  }
+  ::selection { background: rgba(30,111,255,0.3); }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--nav-bg);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    height: 68px;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: background var(--transition);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700; font-size: 1.25rem;
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+  .logo-mark {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: var(--gradient);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem; font-weight: 800; color: #fff;
+    letter-spacing: -0.5px;
+  }
+  .nav-links {
+    display: flex; align-items: center; gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none; font-size: 0.9rem; font-weight: 500;
+    transition: color var(--transition);
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 2px;
+    background: var(--gradient); border-radius: 2px;
+    transform: scaleX(0); transition: transform var(--transition);
+  }
+  .nav-links a:hover { color: var(--text-primary); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-right { display: flex; align-items: center; gap: 1rem; }
+  .theme-toggle {
+    width: 44px; height: 24px; border-radius: 12px;
+    background: var(--border-strong);
+    border: 1px solid var(--border-strong);
+    cursor: pointer; position: relative;
+    transition: background var(--transition);
+    display: flex; align-items: center; padding: 2px;
+    outline: none;
+    flex-shrink: 0;
+  }
+  .theme-toggle:focus-visible { box-shadow: 0 0 0 3px rgba(30,111,255,0.4); }
+  .toggle-thumb {
+    width: 18px; height: 18px; border-radius: 50%;
+    background: var(--gradient);
+    transition: transform var(--transition);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px;
+  }
+  [data-theme="light"] .toggle-thumb { transform: translateX(20px); }
+  .nav-cta {
+    background: var(--gradient);
+    color: #fff; border: none; padding: 0.5rem 1.2rem;
+    border-radius: 8px; font-size: 0.875rem; font-weight: 600;
+    cursor: pointer; transition: opacity var(--transition), transform var(--transition);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .nav-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  /* SECTIONS */
+  section { padding: 7rem 5%; }
+  .section-label {
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: var(--gradient);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block; margin-bottom: 0.75rem;
+  }
+  h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; line-height: 1.2; }
+  .section-heading {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; color: var(--text-primary);
+    margin-bottom: 1rem;
+  }
+  .section-sub {
+    font-size: 1.05rem; color: var(--text-secondary);
+    max-width: 580px; line-height: 1.7;
+  }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    padding: 10rem 5% 6rem;
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 70% 60% at 60% 40%, rgba(30,111,255,0.13) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 80% 70%, rgba(10,190,255,0.08) 0%, transparent 60%);
+  }
+  [data-theme="light"] .hero-bg {
+    background:
+      radial-gradient(ellipse 70% 60% at 60% 40%, rgba(30,111,255,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 80% 70%, rgba(10,190,255,0.05) 0%, transparent 60%);
+  }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; width: 100%; max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--gradient-subtle);
+    border: 1px solid rgba(30,111,255,0.25);
+    border-radius: 100px; padding: 0.4rem 1rem;
+    font-size: 0.8rem; color: var(--blue-end);
+    font-weight: 500; margin-bottom: 1.5rem;
+  }
+  .hero-tag-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gradient); flex-shrink: 0; }
+  .hero-title {
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 800; color: var(--text-primary);
+    line-height: 1.1; margin-bottom: 1.5rem;
+  }
+  .hero-title span {
+    background: var(--gradient);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-desc {
+    font-size: 1.05rem; color: var(--text-secondary);
+    line-height: 1.75; max-width: 480px; margin-bottom: 2.5rem;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gradient); color: #fff;
+    border: none; padding: 0.85rem 2rem;
+    border-radius: 10px; font-size: 1rem; font-weight: 600;
+    cursor: pointer; transition: transform var(--transition), box-shadow var(--transition);
+    text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(30,111,255,0.35); }
+  .btn-outline {
+    background: transparent;
+    border: 1.5px solid var(--border-strong);
+    color: var(--text-primary);
+    padding: 0.85rem 2rem; border-radius: 10px;
+    font-size: 1rem; font-weight: 500;
+    cursor: pointer; transition: border-color var(--transition), background var(--transition);
+    text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-outline:hover { border-color: var(--accent); background: var(--gradient-subtle); }
+  .hero-visual {
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .hero-card-stack {
+    position: relative; width: 380px; height: 320px;
+  }
+  .hcard {
+    position: absolute;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px; padding: 1.5rem;
+    transition: background var(--transition), border-color var(--transition);
+  }
+  .hcard-main {
+    width: 340px; top: 0; left: 20px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+  }
+  .hcard-sub {
+    width: 240px; bottom: 0; right: 0;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+  }
+  .hcard-label { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+  .hcard-title { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 1rem; }
+  .hcard-bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .hcard-bar-label { font-size: 0.72rem; color: var(--text-secondary); width: 60px; flex-shrink: 0; }
+  .hcard-bar-bg { flex: 1; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .hcard-bar-fill { height: 100%; border-radius: 3px; background: var(--gradient); }
+  .hcard-metric { display: flex; justify-content: space-between; align-items: flex-end; }
+  .metric-big { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .metric-label { font-size: 0.78rem; color: var(--text-muted); }
+  .hero-stats { display: flex; gap: 2.5rem; margin-top: 3rem; }
+  .hstat-val { font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; font-weight: 700; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hstat-label { font-size: 0.82rem; color: var(--text-secondary); margin-top: 2px; }
+
+  /* SERVICES */
+  #services { background: var(--bg-secondary); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .service-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px; padding: 2rem;
+    transition: border-color var(--transition), background var(--transition), transform var(--transition);
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--gradient-subtle);
+    opacity: 0; transition: opacity var(--transition);
+  }
+  .service-card:hover { border-color: rgba(30,111,255,0.35); transform: translateY(-4px); }
+  .service-card:hover::before { opacity: 1; }
+  .service-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: var(--gradient-subtle);
+    border: 1px solid rgba(30,111,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.25rem; position: relative;
+    font-size: 1.4rem;
+  }
+  .service-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; position: relative; color: var(--text-primary); }
+  .service-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65; position: relative; }
+  .service-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--blue-end); font-size: 0.85rem; font-weight: 500;
+    text-decoration: none; margin-top: 1.25rem; position: relative;
+    transition: gap var(--transition);
+  }
+  .service-link:hover { gap: 10px; }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .about-img-block { position: relative; }
+  .about-img-main {
+    width: 100%; border-radius: 20px; overflow: hidden;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  .about-stat-card {
+    background: var(--gradient-subtle);
+    border: 1px solid rgba(30,111,255,0.15);
+    border-radius: 12px; padding: 1.25rem; text-align: center;
+  }
+  .about-stat-val { font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; font-weight: 700; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .about-stat-lbl { font-size: 0.8rem; color: var(--text-secondary); margin-top: 4px; }
+  .about-badge {
+    position: absolute; bottom: -18px; right: -18px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px; padding: 1rem 1.5rem;
+    display: flex; align-items: center; gap: 10px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+  }
+  .badge-dot { width: 10px; height: 10px; border-radius: 50%; background: #22d472; flex-shrink: 0; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(34,212,114,0.4)} 50%{box-shadow:0 0 0 6px rgba(34,212,114,0)} }
+  .about-list { list-style: none; margin-top: 1.5rem; }
+  .about-list li {
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary); font-size: 0.93rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .check-icon { color: var(--blue-end); flex-shrink: 0; font-size: 1rem; }
+
+  /* PROJECTS */
+  #projects { background: var(--bg-secondary); }
+  .projects-filter {
+    display: flex; gap: 0.6rem; flex-wrap: wrap; margin: 2rem 0;
+  }
+  .filter-btn {
+    padding: 0.45rem 1.1rem; border-radius: 100px;
+    border: 1px solid var(--border);
+    background: transparent; color: var(--text-secondary);
+    font-size: 0.85rem; font-weight: 500; cursor: pointer;
+    transition: all var(--transition);
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--gradient); color: #fff; border-color: transparent;
+  }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.75rem; }
+  .project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 18px; overflow: hidden;
+    transition: border-color var(--transition), transform var(--transition);
+  }
+  .project-card:hover { border-color: rgba(30,111,255,0.35); transform: translateY(-5px); }
+  .project-thumb {
+    height: 200px; position: relative;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3rem; overflow: hidden;
+  }
+  .project-body { padding: 1.5rem; }
+  .project-tag {
+    display: inline-block; padding: 0.25rem 0.75rem;
+    border-radius: 100px; font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    margin-bottom: 0.85rem;
+  }
+  .tag-web { background: rgba(30,111,255,0.12); color: #5fa5ff; }
+  .tag-mobile { background: rgba(10,190,255,0.12); color: #0abeff; }
+  .tag-system { background: rgba(99,60,255,0.12); color: #a07aff; }
+  .tag-erp { background: rgba(255,120,30,0.12); color: #ff9650; }
+  .project-body h3 { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.6rem; }
+  .project-body p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1rem; }
+  .project-meta { display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.8rem; color: var(--text-muted); border-top: 1px solid var(--border); padding-top: 1rem; margin-top: 0.5rem; }
+  .project-meta span { display: flex; align-items: center; gap: 5px; }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 6px; margin: 0.85rem 0; }
+  .stack-pill {
+    padding: 0.2rem 0.6rem; border-radius: 6px;
+    background: var(--border); color: var(--text-secondary);
+    font-size: 0.72rem; font-family: 'Space Grotesk', sans-serif; font-weight: 500;
+  }
+  .expand-btn {
+    background: none; border: 1px solid var(--border);
+    color: var(--text-secondary); border-radius: 8px;
+    padding: 0.45rem 1rem; font-size: 0.82rem; cursor: pointer;
+    transition: all var(--transition); width: 100%; margin-top: 0.5rem;
+  }
+  .expand-btn:hover { border-color: var(--accent); color: var(--text-primary); }
+  .project-detail { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+  .project-detail.open { max-height: 400px; }
+  .project-detail-inner { padding-top: 1rem; border-top: 1px solid var(--border); margin-top: 1rem; }
+  .detail-row { margin-bottom: 0.75rem; }
+  .detail-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 0.25rem; }
+  .detail-val { font-size: 0.88rem; color: var(--text-secondary); }
+
+  /* PROCESS */
+  .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; margin-top: 3rem; position: relative; }
+  .process-steps::before { content: ''; position: absolute; top: 28px; left: 10%; right: 10%; height: 1px; background: var(--border); z-index: 0; }
+  .process-step { text-align: center; padding: 1.5rem; position: relative; z-index: 1; }
+  .step-num {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--bg-card);
+    border: 1.5px solid var(--border-strong);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1rem;
+    font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700;
+    background: var(--gradient);
+    color: #fff;
+    transition: transform var(--transition);
+  }
+  .process-step:hover .step-num { transform: scale(1.1); }
+  .process-step h3 { font-size: 0.95rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem; }
+  .process-step p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6; }
+
+  /* TEAM / TECH */
+  .tech-grid { display: flex; flex-wrap: wrap; gap: 0.85rem; margin-top: 2.5rem; }
+  .tech-pill {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 100px; padding: 0.55rem 1.1rem;
+    font-size: 0.85rem; color: var(--text-secondary);
+    font-weight: 500; transition: all var(--transition);
+  }
+  .tech-pill:hover { border-color: rgba(30,111,255,0.35); color: var(--text-primary); }
+  .tech-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gradient); flex-shrink: 0; }
+
+  /* TESTIMONIALS */
+  #testimonials { background: var(--bg-secondary); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .tcard {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px; padding: 2rem;
+    transition: border-color var(--transition);
+  }
+  .tcard:hover { border-color: rgba(30,111,255,0.25); }
+  .tcard-quote { font-size: 0.93rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 1.5rem; font-style: italic; }
+  .tcard-author { display: flex; align-items: center; gap: 12px; }
+  .tcard-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--gradient);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 1rem; color: #fff;
+    flex-shrink: 0;
+  }
+  .tcard-name { font-weight: 600; font-size: 0.9rem; color: var(--text-primary); }
+  .tcard-role { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+  .stars { color: #f5c518; font-size: 0.85rem; margin-bottom: 1rem; letter-spacing: 2px; }
+
+  /* CONTACT */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: start; }
+  .contact-info-list { list-style: none; margin-top: 2rem; }
+  .contact-info-list li {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 1.2rem 0; border-bottom: 1px solid var(--border);
+  }
+  .ci-icon {
+    width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+    background: var(--gradient-subtle);
+    border: 1px solid rgba(30,111,255,0.15);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+  }
+  .ci-label { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 3px; }
+  .ci-val { font-size: 0.92rem; color: var(--text-primary); font-weight: 500; }
+  .contact-form { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { margin-bottom: 1.25rem; }
+  .form-group label { display: block; font-size: 0.82rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 0.5rem; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 10px; padding: 0.75rem 1rem;
+    color: var(--text-primary); font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    transition: border-color var(--transition);
+    outline: none;
+    appearance: none;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(30,111,255,0.12);
+  }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+
+  /* FOOTER */
+  footer {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border);
+    padding: 4rem 5% 2.5rem;
+  }
+  .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-brand p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; margin-top: 1rem; max-width: 260px; }
+  .footer-col h4 { font-size: 0.88rem; font-weight: 600; color: var(--text-primary); margin-bottom: 1.25rem; }
+  .footer-col a { display: block; font-size: 0.85rem; color: var(--text-secondary); text-decoration: none; margin-bottom: 0.6rem; transition: color var(--transition); }
+  .footer-col a:hover { color: var(--blue-end); }
+  .footer-bottom { border-top: 1px solid var(--border); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: gap; }
+  .footer-bottom p { font-size: 0.82rem; color: var(--text-muted); }
+
+  /* NOTIFICATION */
+  .toast {
+    position: fixed; bottom: 2rem; right: 2rem;
+    background: var(--bg-card); border: 1px solid rgba(30,111,255,0.3);
+    border-radius: 12px; padding: 1rem 1.5rem;
+    font-size: 0.9rem; color: var(--text-primary);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+    z-index: 9999; transform: translateY(100px); opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+
+  /* SCROLL ANIMATIONS */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    nav .nav-links { display: none; }
+    .process-steps::before { display: none; }
+  }
+  @media (max-width: 560px) {
+    .footer-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    section { padding: 5rem 5%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <div class="logo-mark">IB</div>
+    InfoByte<span style="opacity:0.55; margin-left:3px;">Solutions</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#testimonials">Clients</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" title="Toggle dark/light mode" aria-label="Toggle theme">
+      <div class="toggle-thumb" id="toggleThumb">
+        <span id="themeIcon">🌙</span>
+      </div>
+    </button>
+    <a href="#contact" class="nav-cta">Get a Quote</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid">
+    <div>
+      <div class="hero-tag">
+        <span class="hero-tag-dot"></span>
+        Zimbabwe's Premier IT Partner · Harare
+      </div>
+      <h1 class="hero-title">
+        Building Digital<br>
+        <span>Solutions</span> That<br>
+        Drive Growth
+      </h1>
+      <p class="hero-desc">
+        From enterprise systems to mobile apps, InfoByte Solutions architects and delivers software that transforms how Zimbabwean businesses operate and compete.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">View Our Work →</a>
+        <a href="#contact" class="btn-outline">Start a Project</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hstat-val">80+</div>
+          <div class="hstat-label">Projects delivered</div>
+        </div>
+        <div>
+          <div class="hstat-val">95%</div>
+          <div class="hstat-label">Client retention</div>
+        </div>
+        <div>
+          <div class="hstat-val">7+</div>
+          <div class="hstat-label">Years in market</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card-stack">
+        <div class="hcard hcard-main">
+          <div class="hcard-label">Project Delivery — 2024</div>
+          <div class="hcard-title">On-time Delivery Rate</div>
+          <div class="hcard-bar-row">
+            <span class="hcard-bar-label">Web Apps</span>
+            <div class="hcard-bar-bg"><div class="hcard-bar-fill" style="width:92%"></div></div>
+            <span style="font-size:0.72rem;color:var(--text-muted);">92%</span>
+          </div>
+          <div class="hcard-bar-row">
+            <span class="hcard-bar-label">Mobile</span>
+            <div class="hcard-bar-bg"><div class="hcard-bar-fill" style="width:88%"></div></div>
+            <span style="font-size:0.72rem;color:var(--text-muted);">88%</span>
+          </div>
+          <div class="hcard-bar-row">
+            <span class="hcard-bar-label">Systems</span>
+            <div class="hcard-bar-bg"><div class="hcard-bar-fill" style="width:95%"></div></div>
+            <span style="font-size:0.72rem;color:var(--text-muted);">95%</span>
+          </div>
+          <div style="margin-top:1.25rem;" class="hcard-metric">
+            <div>
+              <div class="metric-big">97%</div>
+              <div class="metric-label">Overall satisfaction</div>
+            </div>
+            <div style="text-align:right">
+              <div style="font-size:0.75rem;color:var(--text-muted);">Active projects</div>
+              <div style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--text-primary)">12</div>
+            </div>
+          </div>
+        </div>
+        <div class="hcard hcard-sub">
+          <div class="hcard-label">Latest milestone</div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:0.5rem;">
+            <div style="width:8px;height:8px;border-radius:50%;background:var(--gradient);flex-shrink:0;"></div>
+            <span style="font-size:0.88rem;font-weight:600;color:var(--text-primary);">ERP deployment live</span>
+          </div>
+          <div style="font-size:0.78rem;color:var(--text-secondary);">Retailer chain — 5 branches synced in real time</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="reveal">
+      <span class="section-label">What We Build</span>
+      <h2 class="section-heading">End-to-End IT Solutions</h2>
+      <p class="section-sub">We cover the full technology stack — strategy, design, development, and support — so you have one trusted partner from idea to production.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">🌐</div>
+        <h3>Web Application Development</h3>
+        <p>Custom, scalable web platforms built with modern frameworks. From single-page apps to complex multi-tenant portals designed for performance and growth.</p>
+        <a href="#contact" class="service-link">Start a project <span>→</span></a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">📱</div>
+        <h3>Mobile App Development</h3>
+        <p>Cross-platform iOS and Android apps with native performance. We build apps that users love and businesses rely on — from MVP to enterprise scale.</p>
+        <a href="#contact" class="service-link">Start a project <span>→</span></a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🏗️</div>
+        <h3>Business Systems & ERP</h3>
+        <p>Custom management systems, ERP platforms, and workflow automation tailored to your operations. Reduce manual work and gain full visibility into your business.</p>
+        <a href="#contact" class="service-link">Start a project <span>→</span></a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🛒</div>
+        <h3>E-Commerce Solutions</h3>
+        <p>High-conversion online stores with secure payment integration, inventory management, and analytics dashboards built for the Zimbabwean market.</p>
+        <a href="#contact" class="service-link">Start a project <span>→</span></a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">☁️</div>
+        <h3>Cloud & Infrastructure</h3>
+        <p>Cloud migration, DevOps pipelines, and hosting setup on AWS, Azure, or local infrastructure. Reliable, secure, and cost-optimized for the region.</p>
+        <a href="#contact" class="service-link">Start a project <span>→</span></a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🔒</div>
+        <h3>IT Consulting & Support</h3>
+        <p>Technology audits, digital transformation roadmaps, and ongoing technical support. We become an extension of your team, not just a vendor.</p>
+        <a href="#contact" class="service-link">Start a project <span>→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="about-grid">
+      <div class="about-img-block reveal">
+        <div class="about-img-main">
+          <div class="about-stat-card">
+            <div class="about-stat-val">7+</div>
+            <div class="about-stat-lbl">Years in business</div>
+          </div>
+          <div class="about-stat-card">
+            <div class="about-stat-val">80+</div>
+            <div class="about-stat-lbl">Projects shipped</div>
+          </div>
+          <div class="about-stat-card">
+            <div class="about-stat-val">40+</div>
+            <div class="about-stat-lbl">Happy clients</div>
+          </div>
+          <div class="about-stat-card">
+            <div class="about-stat-val">15+</div>
+            <div class="about-stat-lbl">Team members</div>
+          </div>
+        </div>
+        <div class="about-badge">
+          <span class="badge-dot"></span>
+          <div>
+            <div style="font-size:0.82rem;font-weight:600;color:var(--text-primary);">Actively delivering</div>
+            <div style="font-size:0.72rem;color:var(--text-muted);">12 live projects right now</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <span class="section-label">Who We Are</span>
+        <h2 class="section-heading">Harare's Home-Grown Tech Studio</h2>
+        <p style="color:var(--text-secondary);line-height:1.75;margin-bottom:1rem;">
+          Founded in 2017, InfoByte Solutions was built on a simple belief — that Zimbabwean businesses deserve world-class software built locally, by people who understand the market.
+        </p>
+        <p style="color:var(--text-secondary);line-height:1.75;">
+          Our multidisciplinary team of engineers, designers, and strategists has shipped solutions for companies across fintech, retail, healthcare, education, and logistics.
+        </p>
+        <ul class="about-list">
+          <li><span class="check-icon">✓</span>Agile delivery with transparent project management</li>
+          <li><span class="check-icon">✓</span>Scalable codebases built to industry standards</li>
+          <li><span class="check-icon">✓</span>Post-launch support & maintenance contracts</li>
+          <li><span class="check-icon">✓</span>Local presence with international expertise</li>
+          <li><span class="check-icon">✓</span>NDA-protected engagements as standard</li>
+        </ul>
+        <a href="#contact" class="btn-primary" style="margin-top:2rem;display:inline-flex;">Meet the team →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="reveal">
+      <span class="section-label">Our Work</span>
+      <h2 class="section-heading">Selected Projects</h2>
+      <p class="section-sub">Real solutions built for real Zimbabwean businesses. Each project reflects our commitment to quality, performance, and measurable outcomes.</p>
+    </div>
+    <div class="projects-filter reveal">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="web">Web Apps</button>
+      <button class="filter-btn" data-filter="mobile">Mobile</button>
+      <button class="filter-btn" data-filter="system">Systems</button>
+      <button class="filter-btn" data-filter="erp">ERP</button>
+    </div>
+    <div class="projects-grid" id="projectsGrid">
+
+      <div class="project-card reveal" data-cat="erp">
+        <div class="project-thumb" style="background:linear-gradient(135deg,#0d1f44,#1e3a8a);">🏪</div>
+        <div class="project-body">
+          <span class="project-tag tag-erp">ERP / POS</span>
+          <h3>RetailPro — Multi-Branch Retail ERP</h3>
+          <p>A complete point-of-sale and inventory management ERP for a Harare-based retail chain spanning 5 branches, with real-time stock sync, employee management, and detailed sales analytics.</p>
+          <div class="project-stack">
+            <span class="stack-pill">Django</span><span class="stack-pill">React</span><span class="stack-pill">PostgreSQL</span><span class="stack-pill">Redis</span><span class="stack-pill">Docker</span>
+          </div>
+          <button class="expand-btn" onclick="toggleDetail(this)">View full details ↓</button>
+          <div class="project-detail">
+            <div class="project-detail-inner">
+              <div class="detail-row"><div class="detail-label">Client</div><div class="detail-val">Confidential — Retail (FMCG)</div></div>
+              <div class="detail-row"><div class="detail-label">Duration</div><div class="detail-val">8 months (2023)</div></div>
+              <div class="detail-row"><div class="detail-label">Scope</div><div class="detail-val">POS terminals, central inventory, HR module, financial reporting, WhatsApp receipt delivery</div></div>
+              <div class="detail-row"><div class="detail-label">Impact</div><div class="detail-val">40% reduction in stock discrepancies; 3× faster checkout process</div></div>
+              <div class="detail-row"><div class="detail-label">Team size</div><div class="detail-val">4 developers, 1 designer, 1 PM</div></div>
+            </div>
+          </div>
+          <div class="project-meta">
+            <span>📅 2023</span>
+            <span>👥 5 branches</span>
+            <span>⚡ 40% efficiency gain</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-cat="web">
+        <div class="project-thumb" style="background:linear-gradient(135deg,#0c2340,#0a5a8a);">🏦</div>
+        <div class="project-body">
+          <span class="project-tag tag-web">Web App</span>
+          <h3>FinEdge — Microfinance Client Portal</h3>
+          <p>A secure, full-featured web platform for a microfinance institution enabling clients to apply for loans, track repayments, and receive statements — reducing branch visits by over 60%.</p>
+          <div class="project-stack">
+            <span class="stack-pill">Next.js</span><span class="stack-pill">Node.js</span><span class="stack-pill">MySQL</span><span class="stack-pill">AWS</span><span class="stack-pill">Stripe</span>
+          </div>
+          <button class="expand-btn" onclick="toggleDetail(this)">View full details ↓</button>
+          <div class="project-detail">
+            <div class="project-detail-inner">
+              <div class="detail-row"><div class="detail-label">Client</div><div class="detail-val">Microfinance institution, Harare</div></div>
+              <div class="detail-row"><div class="detail-label">Duration</div><div class="detail-val">6 months (2023–2024)</div></div>
+              <div class="detail-row"><div class="detail-label">Scope</div><div class="detail-val">Client onboarding, loan lifecycle management, USSD fallback, SMS/email notifications, admin dashboard</div></div>
+              <div class="detail-row"><div class="detail-label">Impact</div><div class="detail-val">62% fewer branch visits; 4× faster loan approval cycle</div></div>
+              <div class="detail-row"><div class="detail-label">Users</div><div class="detail-val">3,200+ registered clients</div></div>
+            </div>
+          </div>
+          <div class="project-meta">
+            <span>📅 2024</span>
+            <span>👤 3,200+ users</span>
+            <span>⚡ 62% fewer visits</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-cat="mobile">
+        <div class="project-thumb" style="background:linear-gradient(135deg,#0d1f3c,#0a3d6b);">🚚</div>
+        <div class="project-body">
+          <span class="project-tag tag-mobile">Mobile App</span>
+          <h3>LogiTrack — Fleet & Delivery App</h3>
+          <p>Real-time fleet tracking and delivery management app for a logistics company, with driver mobile app, dispatcher dashboard, and automated customer ETA notifications.</p>
+          <div class="project-stack">
+            <span class="stack-pill">React Native</span><span class="stack-pill">FastAPI</span><span class="stack-pill">Google Maps</span><span class="stack-pill">Firebase</span>
+          </div>
+          <button class="expand-btn" onclick="toggleDetail(this)">View full details ↓</button>
+          <div class="project-detail">
+            <div class="project-detail-inner">
+              <div class="detail-row"><div class="detail-label">Client</div><div class="detail-val">Logistics & courier company, national coverage</div></div>
+              <div class="detail-row"><div class="detail-label">Duration</div><div class="detail-val">5 months (2022)</div></div>
+              <div class="detail-row"><div class="detail-label">Scope</div><div class="detail-val">Driver app (iOS/Android), web dispatcher portal, live GPS tracking, proof-of-delivery photos, invoicing</div></div>
+              <div class="detail-row"><div class="detail-label">Impact</div><div class="detail-val">30% improvement in on-time delivery; customer complaints down 55%</div></div>
+              <div class="detail-row"><div class="detail-label">Fleet size</div><div class="detail-val">80 vehicles tracked</div></div>
+            </div>
+          </div>
+          <div class="project-meta">
+            <span>📅 2022</span>
+            <span>🚗 80 vehicles</span>
+            <span>⚡ 30% on-time gain</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-cat="system">
+        <div class="project-thumb" style="background:linear-gradient(135deg,#1a0d3c,#3a1a8a);">🏥</div>
+        <div class="project-body">
+          <span class="project-tag tag-system">System</span>
+          <h3>MediCore — Hospital Management System</h3>
+          <p>A comprehensive hospital management system covering patient registration, appointment scheduling, EMR, pharmacy inventory, and billing — deployed across a private hospital network.</p>
+          <div class="project-stack">
+            <span class="stack-pill">Laravel</span><span class="stack-pill">Vue.js</span><span class="stack-pill">MySQL</span><span class="stack-pill">PDF reports</span>
+          </div>
+          <button class="expand-btn" onclick="toggleDetail(this)">View full details ↓</button>
+          <div class="project-detail">
+            <div class="project-detail-inner">
+              <div class="detail-row"><div class="detail-label">Client</div><div class="detail-val">Private hospital group, Harare & Bulawayo</div></div>
+              <div class="detail-row"><div class="detail-label">Duration</div><div class="detail-val">12 months (2021–2022)</div></div>
+              <div class="detail-row"><div class="detail-label">Scope</div><div class="detail-val">Patient EMR, appointment booking, ward management, pharmacy POS, insurance claims module, staff scheduling</div></div>
+              <div class="detail-row"><div class="detail-label">Impact</div><div class="detail-val">Paperless records for 12,000+ patients; billing errors reduced by 78%</div></div>
+              <div class="detail-row"><div class="detail-label">Locations</div><div class="detail-val">3 hospital sites</div></div>
+            </div>
+          </div>
+          <div class="project-meta">
+            <span>📅 2022</span>
+            <span>🏥 3 sites</span>
+            <span>⚡ 12,000+ patients</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-cat="web">
+        <div class="project-thumb" style="background:linear-gradient(135deg,#0c3024,#0a6a40);">🎓</div>
+        <div class="project-body">
+          <span class="project-tag tag-web">Web App</span>
+          <h3>EduPath — LMS & Student Portal</h3>
+          <p>A feature-rich learning management system for a private college, with video lectures, online assessments, student progress tracking, and fee management integrated into one platform.</p>
+          <div class="project-stack">
+            <span class="stack-pill">React</span><span class="stack-pill">Django REST</span><span class="stack-pill">PostgreSQL</span><span class="stack-pill">AWS S3</span>
+          </div>
+          <button class="expand-btn" onclick="toggleDetail(this)">View full details ↓</button>
+          <div class="project-detail">
+            <div class="project-detail-inner">
+              <div class="detail-row"><div class="detail-label">Client</div><div class="detail-val">Private tertiary institution, Harare</div></div>
+              <div class="detail-row"><div class="detail-label">Duration</div><div class="detail-val">7 months (2023)</div></div>
+              <div class="detail-row"><div class="detail-label">Scope</div><div class="detail-val">Course authoring, video hosting, quiz engine, grade book, fee payment, parent portal</div></div>
+              <div class="detail-row"><div class="detail-label">Impact</div><div class="detail-val">800+ active students; admin workload reduced by 50%</div></div>
+              <div class="detail-row"><div class="detail-label">Courses</div><div class="detail-val">35 active courses</div></div>
+            </div>
+          </div>
+          <div class="project-meta">
+            <span>📅 2023</span>
+            <span>👨‍🎓 800+ students</span>
+            <span>⚡ 50% less admin work</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-cat="mobile">
+        <div class="project-thumb" style="background:linear-gradient(135deg,#2c1a00,#8a4a00);">🛍️</div>
+        <div class="project-body">
+          <span class="project-tag tag-mobile">Mobile App</span>
+          <h3>ShopZim — Local E-Commerce App</h3>
+          <p>A marketplace mobile app connecting Zimbabwean buyers and SME sellers, with EcoCash and ZimSwitch payment integration, delivery partner API, and vendor analytics dashboard.</p>
+          <div class="project-stack">
+            <span class="stack-pill">Flutter</span><span class="stack-pill">Node.js</span><span class="stack-pill">MongoDB</span><span class="stack-pill">EcoCash API</span>
+          </div>
+          <button class="expand-btn" onclick="toggleDetail(this)">View full details ↓</button>
+          <div class="project-detail">
+            <div class="project-detail-inner">
+              <div class="detail-row"><div class="detail-label">Client</div><div class="detail-val">E-commerce startup, Harare</div></div>
+              <div class="detail-row"><div class="detail-label">Duration</div><div class="detail-val">9 months (2022–2023)</div></div>
+              <div class="detail-row"><div class="detail-label">Scope</div><div class="detail-val">iOS + Android app, vendor CMS, EcoCash/ZimSwitch payments, delivery tracking, push notifications, admin panel</div></div>
+              <div class="detail-row"><div class="detail-label">Impact</div><div class="detail-val">5,000+ downloads in first 3 months; 120 active vendors</div></div>
+              <div class="detail-row"><div class="detail-label">GMV</div><div class="detail-val">USD 180k+ processed in year one</div></div>
+            </div>
+          </div>
+          <div class="project-meta">
+            <span>📅 2023</span>
+            <span>📦 120 vendors</span>
+            <span>⚡ 5k+ downloads</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="reveal" style="text-align:center;">
+      <span class="section-label">How We Work</span>
+      <h2 class="section-heading">Our Delivery Process</h2>
+      <p class="section-sub" style="margin:0 auto;">A structured, transparent process that keeps you informed and your project on track at every stage.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-num">01</div>
+        <h3>Discovery</h3>
+        <p>Deep-dive into your goals, users, and constraints. We map requirements and define a clear project scope together.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">02</div>
+        <h3>Architecture</h3>
+        <p>Technical blueprint, system design, and UX wireframes reviewed and approved before any code is written.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">03</div>
+        <h3>Build</h3>
+        <p>Iterative sprints with weekly demos. You see progress every week, not just at the end.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">04</div>
+        <h3>QA & Test</h3>
+        <p>Rigorous automated and manual testing. Security audits, performance benchmarking, and UAT sign-off.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">05</div>
+        <h3>Launch</h3>
+        <p>Smooth deployment, staff training, and a hypercare period ensuring a stable go-live experience.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNOLOGIES -->
+<section id="tech" style="padding-top:2rem;padding-bottom:5rem;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="reveal" style="text-align:center;margin-bottom:1rem;">
+      <span class="section-label">Our Stack</span>
+      <h2 class="section-heading" style="font-size:1.8rem;">Technologies We Work With</h2>
+    </div>
+    <div class="tech-grid reveal" style="justify-content:center;">
+      <span class="tech-pill"><span class="tech-dot"></span>React</span>
+      <span class="tech-pill"><span class="tech-dot"></span>Next.js</span>
+      <span class="tech-pill"><span class="tech-dot"></span>Vue.js</span>
+      <span class="tech-pill"><span class="tech-dot"></span>React Native</span>
+      <span class="tech-pill"><span class="tech-dot"></span>Flutter</span>
+      <span class="tech-pill"><span class="tech-dot"></span>Node.js</span>
+      <span class="tech-pill"><span class="tech-dot"></span>Django</span>
+      <span class="tech-pill"><span class="tech-dot"></span>Laravel</span>
+      <span class="tech-pill"><span class="tech-dot"></span>FastAPI</span>
+      <span class="tech-pill"><span class="tech-dot"></span>PostgreSQL</span>
+      <span class="tech-pill"><span class="tech-dot"></span>MySQL</span>
+      <span class="tech-pill"><span class="tech-dot"></span>MongoDB</span>
+      <span class="tech-pill"><span class="tech-dot"></span>AWS</span>
+      <span class="tech-pill"><span class="tech-dot"></span>Docker</span>
+      <span class="tech-pill"><span class="tech-dot"></span>Firebase</span>
+      <span class="tech-pill"><span class="tech-dot"></span>Figma</span>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="reveal" style="text-align:center;">
+      <span class="section-label">Client Voices</span>
+      <h2 class="section-heading">What Our Clients Say</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="tcard reveal">
+        <div class="stars">★★★★★</div>
+        <p class="tcard-quote">"InfoByte delivered our ERP on time and within budget — something we'd been told was impossible by other vendors. The system transformed how we manage our stores."</p>
+        <div class="tcard-author">
+          <div class="tcard-avatar">TM</div>
+          <div>
+            <div class="tcard-name">Tendai Murisa</div>
+            <div class="tcard-role">CEO, Retail Chain — Harare</div>
+          </div>
+        </div>
+      </div>
+      <div class="tcard reveal">
+        <div class="stars">★★★★★</div>
+        <p class="tcard-quote">"Our microfinance portal reduced walk-ins dramatically. Clients love the app and our staff productivity doubled. InfoByte understood our compliance needs deeply."</p>
+        <div class="tcard-author">
+          <div class="tcard-avatar">CN</div>
+          <div>
+            <div class="tcard-name">Chipo Nzira</div>
+            <div class="tcard-role">Operations Director, MFI</div>
+          </div>
+        </div>
+      </div>
+      <div class="tcard reveal">
+        <div class="stars">★★★★★</div>
+        <p class="tcard-quote">"The LogiTrack app gave us real-time visibility we never had before. Driver accountability went up, client complaints dropped, and we finally know where every truck is."</p>
+        <div class="tcard-author">
+          <div class="tcard-avatar">BK</div>
+          <div>
+            <div class="tcard-name">Brian Kachingwe</div>
+            <div class="tcard-role">Fleet Manager, Logistics Co.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="reveal">
+      <span class="section-label">Get In Touch</span>
+      <h2 class="section-heading">Let's Build Something</h2>
+      <p class="section-sub">Tell us about your project. We'll respond within one business day with an honest assessment and next steps.</p>
+    </div>
+    <div class="contact-grid" style="margin-top:3rem;">
+      <div class="reveal">
+        <ul class="contact-info-list">
+          <li>
+            <div class="ci-icon">📍</div>
+            <div><div class="ci-label">Office</div><div class="ci-val">4th Floor, Eastgate Centre, Sam Nujoma St, Harare, Zimbabwe</div></div>
+          </li>
+          <li>
+            <div class="ci-icon">📞</div>
+            <div><div class="ci-label">Phone / WhatsApp</div><div class="ci-val">+263 77 123 4567</div></div>
+          </li>
+          <li>
+            <div class="ci-icon">✉️</div>
+            <div><div class="ci-label">Email</div><div class="ci-val">hello@infobytesolutions.co.zw</div></div>
+          </li>
+          <li>
+            <div class="ci-icon">🕐</div>
+            <div><div class="ci-label">Working Hours</div><div class="ci-val">Mon – Fri, 8:00 AM – 5:30 PM CAT</div></div>
+          </li>
+        </ul>
+        <div style="margin-top:2rem;padding:1.5rem;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;">
+          <div style="font-size:0.85rem;font-weight:600;color:var(--text-primary);margin-bottom:0.5rem;">Free consultation</div>
+          <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;">Every engagement starts with a free 60-minute discovery call. No commitment, no pressure — just an honest conversation about what you need.</div>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <h3 style="font-size:1.15rem;font-weight:600;margin-bottom:1.5rem;color:var(--text-primary);">Send us a message</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First name</label>
+            <input type="text" id="fname" placeholder="Tendai">
+          </div>
+          <div class="form-group">
+            <label for="lname">Last name</label>
+            <input type="text" id="lname" placeholder="Mutasa">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" id="email" placeholder="tendai@yourcompany.co.zw">
+        </div>
+        <div class="form-group">
+          <label for="service">Service needed</label>
+          <select id="service">
+            <option value="">Select a service...</option>
+            <option>Web Application Development</option>
+            <option>Mobile App Development</option>
+            <option>Business System / ERP</option>
+            <option>E-Commerce Solution</option>
+            <option>Cloud & Infrastructure</option>
+            <option>IT Consulting</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="budget">Approximate budget (USD)</label>
+          <select id="budget">
+            <option value="">Select a range...</option>
+            <option>Under $2,000</option>
+            <option>$2,000 – $10,000</option>
+            <option>$10,000 – $30,000</option>
+            <option>$30,000 – $80,000</option>
+            <option>$80,000+</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Tell us about your project</label>
+          <textarea id="message" placeholder="Describe what you're looking to build, any deadlines, and any specific requirements..."></textarea>
+        </div>
+        <button class="btn-primary" style="width:100%;justify-content:center;" onclick="submitForm()">Send message →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#hero" class="nav-logo" style="text-decoration:none;">
+          <div class="logo-mark">IB</div>
+          InfoByte Solutions
+        </a>
+        <p>Building Zimbabwe's digital future — one system at a time. Based in Harare, working across the region.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#services">Web Applications</a>
+        <a href="#services">Mobile Apps</a>
+        <a href="#services">Business Systems</a>
+        <a href="#services">E-Commerce</a>
+        <a href="#services">IT Consulting</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#about">About Us</a>
+        <a href="#projects">Projects</a>
+        <a href="#process">Our Process</a>
+        <a href="#testimonials">Clients</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="#">LinkedIn</a>
+        <a href="#">Twitter / X</a>
+        <a href="#">WhatsApp</a>
+        <a href="#">GitHub</a>
+        <a href="#">Behance</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 InfoByte Solutions (Pvt) Ltd · Harare, Zimbabwe · All rights reserved</p>
+      <p style="color:var(--text-muted);">Privacy Policy · Terms of Service</p>
+    </div>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✅ Message sent! We'll be in touch within 24 hours.</div>
+
+<script>
+  // Theme toggle
+  const btn = document.getElementById('themeToggle');
+  const icon = document.getElementById('themeIcon');
+  btn.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    icon.textContent = next === 'dark' ? '🌙' : '☀️';
+  });
+
+  // Project filter
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.project-card').forEach(card => {
+        if (filter === 'all' || card.dataset.cat === filter) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Project expand/collapse
+  function toggleDetail(btn) {
+    const detail = btn.nextElementSibling;
+    const isOpen = detail.classList.contains('open');
+    detail.classList.toggle('open');
+    btn.textContent = isOpen ? 'View full details ↓' : 'Hide details ↑';
+  }
+
+  // Form submit
+  function submitForm() {
+    const fname = document.getElementById('fname').value;
+    const email = document.getElementById('email').value;
+    if (!fname || !email) {
+      showToast('⚠️ Please fill in your name and email.');
+      return;
+    }
+    showToast('✅ Message sent! We\'ll be in touch within 24 hours.');
+  }
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 4000);
+  }
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Active nav link highlight on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY + 100;
+    sections.forEach(section => {
+      if (scrollY >= section.offsetTop && scrollY < section.offsetTop + section.offsetHeight) {
+        navLinks.forEach(link => {
+          link.style.color = link.getAttribute('href') === '#' + section.id
+            ? 'var(--text-primary)' : '';
+        });
+      }
+    });
+  });
+</script>
+</body>
+</html>
