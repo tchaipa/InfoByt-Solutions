@@ -1,6 +1,21 @@
 import "./Contact.css";
 
 function Contact() {
+  // function submitForm() {
+  //   const fname = document.getElementById("fname").value;
+  //   const email = document.getElementById("email").value;
+  //   if (!fname || !email) {
+  //     showToast("⚠️ Please fill in your name and email.");
+  //     return;
+  //   }
+  //   showToast("✅ Message sent! We'll be in touch within 24 hours.");
+  // }
+  // function showToast(msg) {
+  //   const toast = document.getElementById("toast");
+  //   toast.textContent = msg;
+  //   toast.classList.add("show");
+  //   setTimeout(() => toast.classList.remove("show"), 4000);
+  // }
   return (
     <section id="contact">
       <div className="contact-section">
@@ -20,7 +35,7 @@ function Contact() {
                 <div>
                   <div class="ci-label">Office</div>
                   <div class="ci-val">
-                    4th Floor, Eastgate Centre, Sam Nujoma St, Harare, Zimbabwe
+                    3 Anchor House, 54 Jason Moyo Ave, Harare, Zimbabwe
                   </div>
                 </div>
               </li>
@@ -28,14 +43,14 @@ function Contact() {
                 <div class="ci-icon">📞</div>
                 <div>
                   <div class="ci-label">Phone / WhatsApp</div>
-                  <div class="ci-val">+263 77 123 4567</div>
+                  <div class="ci-val">+263 77 257 9293</div>
                 </div>
               </li>
               <li>
                 <div class="ci-icon">✉️</div>
                 <div>
                   <div class="ci-label">Email</div>
-                  <div class="ci-val">hello@infobytesolutions.co.zw</div>
+                  <div class="ci-val">infobytesolution.@gmail.com</div>
                 </div>
               </li>
               <li>

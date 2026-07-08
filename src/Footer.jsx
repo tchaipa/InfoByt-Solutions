@@ -42,7 +42,7 @@ function Footer() {
         </div>
         <div class="footer-bottom">
           <p>
-            © 2024 InfoByte Solutions (Pvt) Ltd · Harare, Zimbabwe · All rights
+            © 2026 InfoByte Solutions (Pvt) Ltd · Harare, Zimbabwe · All rights
             reserved
           </p>
           <p className="footer-p">Privacy Policy · Terms of Service</p>
