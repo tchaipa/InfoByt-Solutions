@@ -86,6 +86,18 @@ function Services() {
               Start a project <span>→</span>
             </a>
           </div>
+          <div class="service-card reveal">
+            <div class="service-icon">🔒</div>
+            <h3>AI Integration</h3>
+            <p>
+              Technology audits, digital transformation roadmaps, and ongoing
+              technical support. We become an extension of your team, not just a
+              vendor.
+            </p>
+            <a href="#contact" class="service-link">
+              Start a project <span>→</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
