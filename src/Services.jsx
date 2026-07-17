@@ -4,7 +4,7 @@ function Services() {
   return (
     <section id="services" className="services">
       <div className="services-section">
-        <div class="reveal">
+        <div class="reveal ">
           <span class="section-label">What We Build</span>
           <h2 class="section-heading">End-to-End IT Solutions</h2>
           <p class="section-sub">

@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import About from "./About";
 import "./App.css";
 import Contact from "./Contact";
@@ -11,6 +12,22 @@ import Technologies from "./Technologies";
 import Testimonials from "./Testimonials";
 
 function App() {
+  useEffect(() => {
+    const reveals = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
+    );
+    reveals.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="app ">
       <Nav />
