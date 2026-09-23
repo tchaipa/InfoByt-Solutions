@@ -2,9 +2,9 @@ import "./Services.css";
 
 function Services() {
   return (
-    <section id="services" className="services">
+    <section id="services">
       <div className="services-section">
-        <div class="reveal ">
+        <div class="reveal">
           <span class="section-label">What We Build</span>
           <h2 class="section-heading">End-to-End IT Solutions</h2>
           <p class="section-sub">
@@ -77,18 +77,6 @@ function Services() {
           <div class="service-card reveal">
             <div class="service-icon">🔒</div>
             <h3>IT Consulting & Support</h3>
-            <p>
-              Technology audits, digital transformation roadmaps, and ongoing
-              technical support. We become an extension of your team, not just a
-              vendor.
-            </p>
-            <a href="#contact" class="service-link">
-              Start a project <span>→</span>
-            </a>
-          </div>
-          <div class="service-card reveal">
-            <div class="service-icon">🔒</div>
-            <h3>AI Integration</h3>
             <p>
               Technology audits, digital transformation roadmaps, and ongoing
               technical support. We become an extension of your team, not just a

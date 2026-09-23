@@ -8,7 +8,7 @@ function Footer() {
         <div class="footer-grid">
           <div class="footer-brand">
             <a href="#hero" class="nav-logo">
-              <img className="logo" src={logo} />
+              <img className="footer-logo" src={logo} />
             </a>
             <p>
               Building Zimbabwe's digital future — one system at a time. Based

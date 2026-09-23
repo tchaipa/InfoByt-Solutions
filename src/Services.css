@@ -5,9 +5,6 @@
 .services-section {
     max-width: 1200px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-
 }
 
 .services-grid {
@@ -22,14 +19,16 @@
     border: 1px solid var(--border);
     border-radius: 16px;
     padding: 2rem;
-    transition: border-color var(--transition), background var(--transition), transform var(--transition);
+    transition:
+        border-color var(--transition),
+        background var(--transition),
+        transform var(--transition);
     position: relative;
     overflow: hidden;
-
 }
 
 .service-card::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     background: var(--gradient-subtle);
@@ -52,11 +51,12 @@
     border-radius: 12px;
     background: var(--gradient-subtle);
     border: 1px solid rgba(30, 111, 255, 0.2);
-    margin-bottom: 1.25rem;
-    font-size: 1.4rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 1.25rem;
+    position: relative;
+    font-size: 1.4rem;
 }
 
 .service-card h3 {
@@ -89,11 +89,4 @@
 
 .service-link:hover {
     gap: 10px;
-}
-
-.reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-
 }

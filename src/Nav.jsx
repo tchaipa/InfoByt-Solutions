@@ -47,10 +47,10 @@ function Nav() {
 
   return (
     <nav>
-      <a href="#hero" className="nav-logo">
-        <img className="logo" src={logo} alt="Infobyt logo" />
+      <a href="#hero" class="nav-logo">
+        <img className="logo" src={logo} alt="InfoByte Solutions" />
       </a>
-      <ul className="nav-links">
+      <ul class="nav-links">
         <li>
           <a href="#services">Services</a>
         </li>
@@ -70,21 +70,21 @@ function Nav() {
           <a href="#contact">Contact</a>
         </li>
       </ul>
-      <div className="nav-right">
+      <div class="nav-right">
         <button
-          className="theme-toggle"
+          class="theme-toggle"
           id="themeToggle"
           ref={themeBtnRef}
           title="Toggle dark/light mode"
           aria-label="Toggle theme"
         >
-          <div className="toggle-thumb" id="toggleThumb">
+          <div class="toggle-thumb" id="toggleThumb">
             <span id="themeIcon" ref={themeIconRef}>
               🌙
             </span>
           </div>
         </button>
-        <a href="#contact" className="nav-cta">
+        <a href="#contact" class="nav-cta">
           Get a Quote
         </a>
       </div>

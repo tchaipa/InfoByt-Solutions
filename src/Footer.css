@@ -58,10 +58,14 @@ footer {
     margin: 0 auto;
 }
 
-.nav-logo {
-    text-decoration: none;
-}
+
 
 .footer-p {
     color: var(--text-muted);
+}
+
+.footer-logo {
+    width: 100%;
+    height: 60px;
+    object-fit: cover;
 }

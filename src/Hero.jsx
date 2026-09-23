@@ -40,8 +40,8 @@ function Hero() {
               <div class="hstat-label">Client retention</div>
             </div>
             <div>
-              <div class="hstat-val">7+</div>
-              <div class="hstat-label">Years in market</div>
+              <div class="hstat-val">3+</div>
+              <div class="hstat-label">Years in the market</div>
             </div>
           </div>
         </div>
@@ -53,42 +53,42 @@ function Hero() {
               <div class="hcard-bar-row">
                 <span class="hcard-bar-label">Web Apps</span>
                 <div class="hcard-bar-bg">
-                  <div class="hcard-bar-fill"></div>
+                  <div class="hcard-bar-fill-1"></div>
                 </div>
-                <span className="hcard-percent">92%</span>
+                <span className="hero-span">92%</span>
               </div>
               <div class="hcard-bar-row">
                 <span class="hcard-bar-label">Mobile</span>
                 <div class="hcard-bar-bg">
-                  <div class="hcard-bar-fill"></div>
+                  <div class="hcard-bar-fill-2"></div>
                 </div>
-                <span className="hcard-percent">88%</span>
+                <span className="hero-span">88%</span>
               </div>
               <div class="hcard-bar-row">
                 <span class="hcard-bar-label">Systems</span>
                 <div class="hcard-bar-bg">
-                  <div class="hcard-bar-fill"></div>
+                  <div class="hcard-bar-fill-3"></div>
                 </div>
-                <span className="hcard-percent">95%</span>
+                <span className="hero-span">95%</span>
               </div>
               <div class="hcard-metric">
                 <div>
                   <div class="metric-big">97%</div>
                   <div class="metric-label">Overall satisfaction</div>
                 </div>
-                <div class="metric-zeus">
-                  <div className="metricc">Active projects</div>
-                  <div className="metric-2">12</div>
-                </div>
+                {/* <div className="hero-1">
+                  <div className="hero-2">Active projects</div>
+                  <div className="hero-3">12</div>
+                </div> */}
               </div>
             </div>
             <div class="hcard hcard-sub">
               <div class="hcard-label">Latest milestone</div>
-              <div className="hcard-label-1">
-                <div className="hcard-label-2"></div>
-                <span className="hcard-label-3">ERP deployment live</span>
+              <div className="hero-4">
+                <div className="hero-5"></div>
+                <span className="hero-6">ERP deployment live</span>
               </div>
-              <div className="hcard-label-4">
+              <div className="hero-7">
                 Retailer chain — 5 branches synced in real time
               </div>
             </div>

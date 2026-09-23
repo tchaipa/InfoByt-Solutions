@@ -1,3 +1,4 @@
+/* HERO */
 #hero {
     min-height: 100vh;
     padding: 10rem 5% 6rem;
@@ -12,14 +13,22 @@
     inset: 0;
     pointer-events: none;
     background:
-        radial-gradient(ellipse 70% 60% at 60% 40%, rgba(30, 111, 255, 0.13) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 40% at 80% 70%, rgba(10, 190, 255, 0.08) 0%, transparent 60%);
+        radial-gradient(ellipse 70% 60% at 60% 40%,
+            rgba(30, 111, 255, 0.13) 0%,
+            transparent 70%),
+        radial-gradient(ellipse 50% 40% at 80% 70%,
+            rgba(10, 190, 255, 0.08) 0%,
+            transparent 60%);
 }
 
 [data-theme="light"] .hero-bg {
     background:
-        radial-gradient(ellipse 70% 60% at 60% 40%, rgba(30, 111, 255, 0.07) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 40% at 80% 70%, rgba(10, 190, 255, 0.05) 0%, transparent 60%);
+        radial-gradient(ellipse 70% 60% at 60% 40%,
+            rgba(30, 111, 255, 0.07) 0%,
+            transparent 70%),
+        radial-gradient(ellipse 50% 40% at 80% 70%,
+            rgba(10, 190, 255, 0.05) 0%,
+            transparent 60%);
 }
 
 .hero-grid {
@@ -92,9 +101,11 @@
     padding: 0.85rem 2rem;
     border-radius: 10px;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 500;
     cursor: pointer;
-    transition: transform var(--transition), box-shadow var(--transition);
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
     text-decoration: none;
     display: inline-flex;
     align-items: center;
@@ -115,7 +126,9 @@
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
-    transition: border-color var(--transition), background var(--transition);
+    transition:
+        border-color var(--transition),
+        background var(--transition);
     text-decoration: none;
     display: inline-flex;
     align-items: center;
@@ -146,7 +159,9 @@
     border: 1px solid var(--border);
     border-radius: 16px;
     padding: 1.5rem;
-    transition: background var(--transition), border-color var(--transition);
+    transition:
+        background var(--transition),
+        border-color var(--transition);
 }
 
 .hcard-main {
@@ -170,7 +185,7 @@
 }
 
 .hcard-title {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: "Space Grotesk", sans-serif;
     font-size: 1rem;
     font-weight: 600;
     color: var(--text-primary);
@@ -199,45 +214,36 @@
     overflow: hidden;
 }
 
-.hcard-bar-fill {
-    width: 92%;
+.hcard-bar-fill-1 {
     height: 100%;
     border-radius: 3px;
     background: var(--gradient);
+    width: 92%
 }
 
-.hcard-percent {
-    font-size: 0.72rem;
-    color: var(--text-muted);
+.hcard-bar-fill-2 {
+    height: 100%;
+    border-radius: 3px;
+    background: var(--gradient);
+    width: 88%
 }
 
+.hcard-bar-fill-3 {
+    height: 100%;
+    border-radius: 3px;
+    background: var(--gradient);
+    width: 95%
+}
 
 .hcard-metric {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-top: 1.25rem;
-}
-
-.metric-zeus {
-    text-align: right;
-
-}
-
-.metricc {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-}
-
-.metric-2 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--text-primary)
+    margin-top: 1.25rem
 }
 
 .metric-big {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: "Space Grotesk", sans-serif;
     font-size: 2rem;
     font-weight: 700;
     background: var(--gradient);
@@ -258,7 +264,7 @@
 }
 
 .hstat-val {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: "Space Grotesk", sans-serif;
     font-size: 1.8rem;
     font-weight: 700;
     background: var(--gradient);
@@ -273,14 +279,35 @@
     margin-top: 2px;
 }
 
-.hcard-label-1 {
+.hero-span {
+    font-size: 0.72rem;
+    color: var(--text-muted)
+}
+
+.hero-1 {
+    text-align: right;
+}
+
+.hero-2 {
+    font-size: 0.75rem;
+    color: var(--text-muted)
+}
+
+.hero-3 {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.hero-4 {
     display: flex;
     align-items: center;
     gap: 8px;
     margin-bottom: 0.5rem;
 }
 
-.hcard-label-2 {
+.hero-5 {
     width: 8px;
     height: 8px;
     border-radius: 50%;
@@ -288,13 +315,13 @@
     flex-shrink: 0;
 }
 
-.hcard-label-3 {
+.hero-6 {
     font-size: 0.88rem;
     font-weight: 600;
     color: var(--text-primary);
 }
 
-.hcard-label-4 {
+.hero-7 {
     font-size: 0.78rem;
-    color: var(--text-secondary);
+    color: var(--text-secondary)
 }
